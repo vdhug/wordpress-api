@@ -1,17 +1,15 @@
 <?php
 
+// Montando um objeto com os meta dados do produto
 function produto_scheme($slug) {
   $post_id = get_produto_id_by_slug($slug);
-
-  // Checa se o produto que tentou ser acessado existe.
   if($post_id) {
     $post_meta = get_post_meta($post_id);
 
-    // Recupera as imagens relacionada a esse post
+    // Recuperando as imagens relacionadas ao produto
     $images = get_attached_media('image', $post_id);
     $images_array = null;
 
-    // Se existir imagem, adiciona as propriedades a um objeto e coloca dentro do array
     if($images) {
       $images_array = array();
       foreach($images as $key => $value) {
@@ -56,6 +54,7 @@ add_action('rest_api_init', 'registrar_api_produto_get');
 // API PRODUTOS
 function api_produtos_get($request) {
 
+  // Recuperando os possíveis valores de filter passados na url
   $q = sanitize_text_field($request['q']) ?: '';
   $_page = sanitize_text_field($request['_page']) ?: 0;
   $_limit = sanitize_text_field($request['_limit']) ?: 9;
