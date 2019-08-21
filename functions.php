@@ -14,6 +14,13 @@ require_once($template_diretorio . "/endpoints/produto_get.php");
 require_once($template_diretorio . "/endpoints/produto_delete.php");
 
 
+require_once($template_diretorio . "/endpoints/transacao_post.php");
+
+// Passando para a requisição o número total de instancias que a busca possui
+add_action('rest_pre_serve_request', function() {
+  header('Access-Control-Expose-Headers: X-Total-Count');
+});
+
 // Função que irá retornar o produto por uma slug
 function get_produto_id_by_slug($slug) {
   $query = new WP_Query(array(
