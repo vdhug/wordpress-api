@@ -11,6 +11,7 @@ require_once($template_diretorio . "/endpoints/usuario_put.php");
 
 require_once($template_diretorio . "/endpoints/produto_post.php");
 require_once($template_diretorio . "/endpoints/produto_get.php");
+require_once($template_diretorio . "/endpoints/produto_delete.php");
 
 
 // Função que irá retornar o produto por uma slug
