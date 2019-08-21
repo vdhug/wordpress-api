@@ -10,7 +10,20 @@ require_once($template_diretorio . "/endpoints/usuario_get.php");
 require_once($template_diretorio . "/endpoints/usuario_put.php");
 
 require_once($template_diretorio . "/endpoints/produto_post.php");
+require_once($template_diretorio . "/endpoints/produto_get.php");
 
+
+// Função que irá retornar o produto por uma slug
+function get_produto_id_by_slug($slug) {
+  $query = new WP_Query(array(
+    'name' => $slug,
+    'post_type' => 'produto',
+    'numberposts' => 1,
+    'fields' => 'ids'
+  ));
+  $posts = $query->get_posts();
+  return array_shift($posts);
+}
 
 // Função que define quando o token vai expirar, no caso, 1 dia depois
 function expire_token() {
