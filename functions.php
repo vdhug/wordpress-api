@@ -9,6 +9,8 @@ require_once($template_diretorio . "/endpoints/usuario_post.php");
 require_once($template_diretorio . "/endpoints/usuario_get.php");
 require_once($template_diretorio . "/endpoints/usuario_put.php");
 
+require_once($template_diretorio . "/endpoints/produto_post.php");
+
 
 // Função que define quando o token vai expirar, no caso, 1 dia depois
 function expire_token() {
